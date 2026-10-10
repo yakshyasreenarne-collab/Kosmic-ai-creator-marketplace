@@ -1,1 +1,134 @@
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kosmic | Creator Marketplace</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/marketplace.css') }}">
+</head>
+<body>
+    <header class="navbar">
+        <a class="brand" href="/">KOSMIC<span>.</span></a>
+        <nav>
+            <a href="/">Discover Creators</a>
+            <a href="/briefs">Campaign Briefs</a>
+            <a href="#shortlist">My Shortlist <span id="shortlist-count">0</span></a>
+        </nav>
+    </header>
+
+    <main class="page">
+        <section class="hero">
+            <p class="eyebrow">CREATOR MARKETPLACE</p>
+            <h1>Find your next <span>creative partner.</span></h1>
+            <p>Discover talented creators who can bring your brand's ideas to life.</p>
+
+            <div class="search-box">
+                <span>⌕</span>
+                <input id="search-input" type="search"
+                       placeholder="Search by creator name or skill..."
+                       aria-label="Search creators">
+                <button id="clear-search" type="button">Clear</button>
+            </div>
+        </section>
+
+        <section class="market-layout">
+            <aside class="filters">
+                <div class="filter-heading">
+                    <h2>Filters</h2>
+                    <button id="reset-filters" type="button" class="text-button">Reset</button>
+                </div>
+
+                <label for="category-filter">Category</label>
+                <select id="category-filter">
+                    <option value="all">All categories</option>
+                    <option value="Video Editing">Video Editing</option>
+                    <option value="Scriptwriting">Scriptwriting</option>
+                    <option value="Animation">Animation</option>
+                    <option value="Videography">Videography</option>
+                </select>
+
+                <label for="rating-filter">Minimum rating</label>
+                <select id="rating-filter">
+                    <option value="0">Any rating</option>
+                    <option value="4">4.0 and above</option>
+                    <option value="4.5">4.5 and above</option>
+                    <option value="4.8">4.8 and above</option>
+                </select>
+
+                <label for="budget-filter">Maximum budget</label>
+                <select id="budget-filter">
+                    <option value="10000">Any budget</option>
+                    <option value="2000">₹2,000</option>
+                    <option value="3500">₹3,500</option>
+                    <option value="5000">₹5,000</option>
+                </select>
+
+                <label class="availability-option">
+                    <input type="checkbox" id="available-filter">
+                    Available for projects
+                </label>
+
+                <div class="filter-note">
+                    <strong>Smart matching</strong>
+                    <p>Enter campaign skills to see which creators best fit your needs.</p>
+                    
+<div class="smart-matching">
+    <label for="campaign-skills">Campaign skills</label>
+    <input
+        type="text"
+        id="campaign-skills"
+        placeholder="e.g. Video Editing, Animation, Scriptwriting"
+    >
+    <p>Match scores update based on the skills you enter.</p>
+</div>
+
+                </div>
+            </aside>
+
+            <section class="results">
+                <div class="results-heading">
+                    <div>
+                        <p class="eyebrow">YOUR CREATIVE NETWORK</p>
+                        <h2>Discover creators</h2>
+                    </div>
+                    <label class="sort-label" for="sort-filter">
+                        Sort by
+                        <select id="sort-filter">
+                            <option value="rating">Highest rated</option>
+                            <option value="budget-low">Lowest budget</option>
+                            <option value="budget-high">Highest budget</option>
+                        </select>
+                    </label>
+                </div>
+
+               
+
+                <p id="result-count" aria-live="polite"></p>
+                <div id="creator-grid" class="creator-grid"></div>
+
+                <div id="empty-state" class="empty-state" hidden>
+                    <h3>No creators found</h3>
+                    <p>Try changing your search or filters.</p>
+                </div>
+            </section>
+        </section>
+
+        <section id="shortlist" class="shortlist-section">
+            <h2>My shortlist <span id="shortlist-heading-count">(0)</span></h2>
+            <p>Creators you've saved for your campaign.</p>
+            <div id="shortlist-grid" class="creator-grid"></div>
+            
+
+
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Kosmic Creator Marketplace · Demo project</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/marketplace.js') }}" defer></script>
+</body>
+</html>

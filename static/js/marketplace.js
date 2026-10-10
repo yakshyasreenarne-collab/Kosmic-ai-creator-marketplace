@@ -265,3 +265,85 @@ if (clearSearch) {
 
 renderCreators();
 renderShortlist();
+
+const creators = [
+    {name:"Aarav Mehta", category:"Video", skills:["Video Editing","Motion Graphics"], tools:["Premiere Pro","After Effects"], price:3500, rating:4.9, availability:"Available", commercial:true, bio:"Creates engaging reels, YouTube videos and motion graphics.", icon:"🎬"},
+    {name:"Diya Reddy", category:"Design", skills:["Graphic Design","Social Media"], tools:["Canva","Photoshop"], price:2200, rating:4.8, availability:"Available", commercial:true, bio:"Designs brand kits, posters and social media creatives.", icon:"🎨"},
+    {name:"Ishaan Varma", category:"AI", skills:["AI Art","Prompt Engineering"], tools:["Midjourney","ChatGPT"], price:4800, rating:5.0, availability:"Available", commercial:true, bio:"Creates imaginative AI visuals and concept art.", icon:"✨"},
+    {name:"Maya Srinivas", category:"Social", skills:["Social Media","Copywriting"], tools:["Canva","ChatGPT"], price:2800, rating:4.7, availability:"Busy", commercial:true, bio:"Plans content calendars and social media campaigns.", icon:"📱"},
+    {name:"Rohan Kapoor", category:"Design", skills:["UI/UX Design","Graphic Design"], tools:["Figma","Photoshop"], price:6000, rating:4.9, availability:"Available", commercial:false, bio:"Designs modern websites and easy-to-use interfaces.", icon:"💻"},
+    {name:"Sana Khan", category:"Writing", skills:["Copywriting","Prompt Engineering"], tools:["ChatGPT","Canva"], price:1800, rating:4.8, availability:"Available", commercial:true, bio:"Writes website copy, blog outlines and product descriptions.", icon:"✍️"}
+];
+
+let selectedCategory = "All";
+
+function renderCreators() {
+    const query = document.getElementById("searchInput").value.toLowerCase().trim();
+    const skill = document.getElementById("skillFilter").value;
+    const availability = document.getElementById("availabilityFilter").value;
+    const budget = Number(document.getElementById("budgetFilter").value);
+    const commercial = document.getElementById("commercialFilter").checked;
+
+    const filtered = creators.filter(c => {
+        const searchable = [c.name, c.category, c.bio, ...c.skills, ...c.tools].join(" ").toLowerCase();
+        return searchable.includes(query)
+            && (selectedCategory === "All" || c.category === selectedCategory)
+            && (!skill || c.skills.includes(skill))
+            && (!availability || c.availability === availability)
+            && c.price <= budget
+            && (!commercial || c.commercial);
+    });
+
+    document.getElementById("count").textContent = filtered.length;
+    const grid = document.getElementById("creatorGrid");
+
+    if (filtered.length === 0) {
+        grid.innerHTML = '<div class="empty">No creators found. Try changing your search or filters.</div>';
+        return;
+    }
+
+    grid.innerHTML = filtered.map(c => `
+        <article class="creator-card">
+            <div class="cover">${c.icon}</div>
+            <div class="creator-info">
+                <h3>${c.name} <span style="color:#b69aff">✦</span></h3>
+                <p class="muted">${c.category} creator · ${c.availability}</p>
+                <p class="muted">${c.bio}</p>
+                <div>${c.skills.map(s => `<span class="tag">${s}</span>`).join("")}</div>
+                <p class="muted">★ ${c.rating} · Tools: ${c.tools.join(", ")}</p>
+                <div class="price">₹${c.price.toLocaleString("en-IN")} / project</div>
+                <button class="view" onclick="viewProfile('${c.name}')">View Profile ↗</button>
+            </div>
+        </article>
+    `).join("");
+}
+
+function setCategory(category) {
+    selectedCategory = category;
+    renderCreators();
+}
+
+function clearFilters() {
+    document.getElementById("searchInput").value = "";
+    document.getElementById("skillFilter").value = "";
+    document.getElementById("availabilityFilter").value = "";
+    document.getElementById("budgetFilter").value = "10000";
+    document.getElementById("budgetValue").textContent = "10000";
+    document.getElementById("commercialFilter").checked = false;
+    selectedCategory = "All";
+    renderCreators();
+}
+
+
+function viewProfile(name) {
+    const creator = creators.find(c => c.name === name);
+
+    if (creator) {
+        sessionStorage.setItem("selectedCreator", JSON.stringify(creator));
+        window.location.href = "/creator-profile";
+    }
+}
+
+
+document.getElementById("searchInput").addEventListener("input", renderCreators);
+renderCreators();

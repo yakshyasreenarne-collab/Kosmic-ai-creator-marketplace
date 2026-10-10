@@ -132,3 +132,213 @@
     <script src="{{ url_for('static', filename='js/marketplace.js') }}" defer></script>
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CreatrAI - Creator Marketplace</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/marketplace.css') }}"
+    >
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2>✦ Creatr<span>AI</span></h2>
+
+        <p class="side-label">WORKSPACE</p>
+
+        <a class="active" href="/marketplace">
+            ⌕ Discover Creators
+        </a>
+
+        <a href="#" onclick="alert('Coming soon!'); return false;">
+            ▤ My Briefs
+        </a>
+
+        <a href="#" onclick="alert('Coming soon!'); return false;">
+            ♡ Saved Creators
+        </a>
+
+        <div class="side-bottom">
+            Creative collaboration starts here ✨
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main>
+
+        <header>
+            Workspace / <strong>Discover Creators</strong>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+
+            <p class="eyebrow">✦ THE CREATOR MARKETPLACE</p>
+
+            <h1>
+                Meet your next<br>
+                <span>creative partner.</span>
+            </h1>
+
+            <p>
+                Discover talented creators and find the perfect match
+                for your next project.
+            </p>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search creators, skills or tools..."
+                aria-label="Search creators"
+            >
+
+            <button type="button" onclick="renderCreators()">
+                Search →
+            </button>
+
+        </section>
+
+        <!-- Marketplace Section -->
+        <section class="marketplace">
+
+            <div class="heading">
+                <h2>
+                    Explore Creators
+                    <span id="count">6</span>
+                </h2>
+
+                <button
+                    type="button"
+                    class="clear"
+                    onclick="clearFilters()"
+                >
+                    Clear filters
+                </button>
+            </div>
+
+            <!-- Category Buttons -->
+            <div class="chips">
+
+                <button type="button" onclick="setCategory('All')">
+                    All creators
+                </button>
+
+                <button type="button" onclick="setCategory('Video')">
+                    Video
+                </button>
+
+                <button type="button" onclick="setCategory('Design')">
+                    Design
+                </button>
+
+                <button type="button" onclick="setCategory('AI')">
+                    AI creation
+                </button>
+
+                <button type="button" onclick="setCategory('Social')">
+                    Social media
+                </button>
+
+                <button type="button" onclick="setCategory('Writing')">
+                    Writing
+                </button>
+
+            </div>
+
+            <!-- Filters and Creator Cards -->
+            <div class="layout">
+
+                <!-- Filters -->
+                <aside class="filters">
+
+                    <h3>Filters</h3>
+
+                    <label for="skillFilter">Skills</label>
+
+                    <select
+                        id="skillFilter"
+                        onchange="renderCreators()"
+                    >
+                        <option value="">All skills</option>
+                        <option value="Video Editing">Video Editing</option>
+                        <option value="Graphic Design">Graphic Design</option>
+                        <option value="UI/UX Design">UI/UX Design</option>
+                        <option value="AI Art">AI Art</option>
+                        <option value="Social Media">Social Media</option>
+                        <option value="Copywriting">Copywriting</option>
+                        <option value="Motion Graphics">Motion Graphics</option>
+                        <option value="Prompt Engineering">Prompt Engineering</option>
+                    </select>
+
+                    <label for="availabilityFilter">
+                        Availability
+                    </label>
+
+                    <select
+                        id="availabilityFilter"
+                        onchange="renderCreators()"
+                    >
+                        <option value="">Any availability</option>
+                        <option value="Available">Available</option>
+                        <option value="Busy">Busy</option>
+                    </select>
+
+                    <label for="budgetFilter">
+                        Maximum budget: ₹<span id="budgetValue">10000</span>
+                    </label>
+
+                    <input
+                        type="range"
+                        id="budgetFilter"
+                        min="500"
+                        max="10000"
+                        step="500"
+                        value="10000"
+                        oninput="
+                            document.getElementById('budgetValue').textContent = this.value;
+                            renderCreators();
+                        "
+                    >
+
+                    <label class="check" for="commercialFilter">
+                        <input
+                            type="checkbox"
+                            id="commercialFilter"
+                            onchange="renderCreators()"
+                        >
+                        Commercial use included
+                    </label>
+
+                </aside>
+
+                <!-- JavaScript inserts creator cards here -->
+                <div
+                    id="creatorGrid"
+                    class="creator-grid"
+                    aria-live="polite"
+                ></div>
+
+            </div>
+
+        </section>
+
+        <footer>
+            CreatrAI Marketplace · Demo version
+        </footer>
+
+    </main>
+
+    <!-- JavaScript File -->
+    <script src="{{ url_for('static', filename='js/marketplace.js') }}"></script>
+
+</body>
+</html>

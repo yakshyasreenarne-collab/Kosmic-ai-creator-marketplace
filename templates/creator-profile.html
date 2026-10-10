@@ -1,1 +1,92 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Creator Profile | CreatrAI</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/creator-profile.css') }}"
+    >
+</head>
+
+<body>
+    <header class="profile-header">
+        <a href="{{ url_for('marketplace') }}" class="back-link">
+            ← Back to Marketplace
+        </a>
+        <h1>CreatrAI</h1>
+    </header>
+
+    <main class="profile-container">
+
+        <section class="profile-card">
+            <div class="profile-avatar" id="creatorAvatar">AM</div>
+
+            <div class="profile-info">
+                <h2 id="creatorName">Aarav Mehta</h2>
+                <p id="creatorCategory">Video Creator</p>
+                <p id="creatorLocation">Hyderabad, India</p>
+
+                <div class="profile-rating">
+                    ⭐ <span id="creatorRating">4.8</span>
+                    <span>Rating</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="profile-section">
+            <h2>About Creator</h2>
+            <p id="creatorBio">
+                A creative professional who produces engaging digital content
+                for brands and audiences.
+            </p>
+        </section>
+
+        <section class="profile-details">
+            <div class="detail-card">
+                <h3>Starting Price</h3>
+                <p id="creatorPrice">₹5,000</p>
+            </div>
+
+            <div class="detail-card">
+                <h3>Availability</h3>
+                <p id="creatorAvailability">Available</p>
+            </div>
+
+            <div class="detail-card">
+                <h3>Commercial Work</h3>
+                <p id="creatorCommercial">Yes</p>
+            </div>
+        </section>
+
+        <section class="profile-section">
+            <h2>Skills and Services</h2>
+            <div id="creatorSkills" class="skills-list">
+                <span>Video Editing</span>
+                <span>Content Creation</span>
+                <span>Social Media</span>
+            </div>
+        </section>
+
+        <section class="profile-section">
+            <h2>Contact</h2>
+            <p id="creatorContact">
+                Contact details will be available when provided by the creator.
+            </p>
+        </section>
+
+        <a href="{{ url_for('marketplace') }}" class="back-button">
+            Explore More Creators
+        </a>
+
+    </main>
+
+    <script src="{{ url_for('static', filename='js/creator-profile.js') }}"></script>
+</body>
+</html>
+
+

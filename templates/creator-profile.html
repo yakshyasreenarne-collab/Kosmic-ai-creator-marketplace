@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Kosmic | Creator Marketplace</title>
+    <title>Kosmic | Creator Profile</title>
 
     <link
         rel="stylesheet"
@@ -14,28 +13,30 @@
 </head>
 
 <body>
+
     <header class="profile-header">
-        <a href="{{ url_for('marketplace') }}" class="back-link">
-            ← Back to Marketplace
-        </a>
-        <h1>CreatrAI</h1>
+        <a href="/" class="back-link">← Back to Marketplace</a>
+        <h1>Kosmic<span>.</span></h1>
+        <p>AI-Powered Creator Marketplace</p>
     </header>
 
     <main class="profile-container">
 
         <section class="profile-card">
+
             <div class="profile-avatar" id="creatorAvatar">AM</div>
 
             <div class="profile-info">
                 <h2 id="creatorName">Aarav Mehta</h2>
                 <p id="creatorCategory">Video Creator</p>
-                <p id="creatorLocation">Hyderabad, India</p>
+                <p id="creatorLocation">India</p>
 
                 <div class="profile-rating">
                     ⭐ <span id="creatorRating">4.8</span>
                     <span>Rating</span>
                 </div>
             </div>
+
         </section>
 
         <section class="profile-section">
@@ -47,6 +48,7 @@
         </section>
 
         <section class="profile-details">
+
             <div class="detail-card">
                 <h3>Starting Price</h3>
                 <p id="creatorPrice">₹5,000</p>
@@ -61,10 +63,12 @@
                 <h3>Commercial Work</h3>
                 <p id="creatorCommercial">Yes</p>
             </div>
+
         </section>
 
         <section class="profile-section">
-            <h2>Skills and Services</h2>
+            <h2>Skills & Services</h2>
+
             <div id="creatorSkills" class="skills-list">
                 <span>Video Editing</span>
                 <span>Content Creation</span>
@@ -74,19 +78,25 @@
 
         <section class="profile-section">
             <h2>Contact</h2>
+
             <p id="creatorContact">
                 Contact details will be available when provided by the creator.
             </p>
         </section>
 
-        <a href="{{ url_for('marketplace') }}" class="back-button">
-            Explore More Creators
-        </a>
+        <div class="profile-actions">
+            <button id="saveCreatorBtn" class="secondary-button">
+                ♡ Save Creator
+            </button>
+
+            <a href="/" class="primary-button">
+                Explore More Creators
+            </a>
+        </div>
 
     </main>
 
     <script src="{{ url_for('static', filename='js/creator-profile.js') }}"></script>
+
 </body>
 </html>
-
-

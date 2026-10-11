@@ -42,6 +42,17 @@ def health():
 # ---------------- CREATOR API ----------------
 
 @app.route("/api/creators", methods=["GET"])
+def get_creators():
+    conn = get_connection()
+    try:
+        rows = conn.execute(
+            "SELECT * FROM creators ORDER BY id DESC"
+        ).fetchall()
+        return jsonify([dict(row) for row in rows])
+    finally:
+        conn.close()
+
+
 # ---------------- CREATOR SEARCH API ----------------
 
 @app.route("/api/creators/search", methods=["GET"])

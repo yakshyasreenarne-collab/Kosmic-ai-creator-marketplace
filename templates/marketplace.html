@@ -1,344 +1,148 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Kosmic | Creator Marketplace</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/marketplace.css') }}">
-</head>
-<body>
-    <header class="navbar">
-        <a class="brand" href="/">KOSMIC<span>.</span></a>
-        <nav>
-            <a href="/">Discover Creators</a>
-            <a href="/briefs">Campaign Briefs</a>
-            <a href="#shortlist">My Shortlist <span id="shortlist-count">0</span></a>
-        </nav>
-    </header>
 
-    <main class="page">
-        <section class="hero">
-            <p class="eyebrow">CREATOR MARKETPLACE</p>
-            <h1>Find your next <span>creative partner.</span></h1>
-            <p>Discover talented creators who can bring your brand's ideas to life.</p>
-
-            <div class="search-box">
-                <span>⌕</span>
-                <input id="search-input" type="search"
-                       placeholder="Search by creator name or skill..."
-                       aria-label="Search creators">
-                <button id="clear-search" type="button">Clear</button>
-            </div>
-        </section>
-
-        <section class="market-layout">
-            <aside class="filters">
-                <div class="filter-heading">
-                    <h2>Filters</h2>
-                    <button id="reset-filters" type="button" class="text-button">Reset</button>
-                </div>
-
-                <label for="category-filter">Category</label>
-                <select id="category-filter">
-                    <option value="all">All categories</option>
-                    <option value="Video Editing">Video Editing</option>
-                    <option value="Scriptwriting">Scriptwriting</option>
-                    <option value="Animation">Animation</option>
-                    <option value="Videography">Videography</option>
-                </select>
-
-                <label for="rating-filter">Minimum rating</label>
-                <select id="rating-filter">
-                    <option value="0">Any rating</option>
-                    <option value="4">4.0 and above</option>
-                    <option value="4.5">4.5 and above</option>
-                    <option value="4.8">4.8 and above</option>
-                </select>
-
-                <label for="budget-filter">Maximum budget</label>
-                <select id="budget-filter">
-                    <option value="10000">Any budget</option>
-                    <option value="2000">₹2,000</option>
-                    <option value="3500">₹3,500</option>
-                    <option value="5000">₹5,000</option>
-                </select>
-
-                <label class="availability-option">
-                    <input type="checkbox" id="available-filter">
-                    Available for projects
-                </label>
-
-                <div class="filter-note">
-                    <strong>Smart matching</strong>
-                    <p>Enter campaign skills to see which creators best fit your needs.</p>
-                    
-<div class="smart-matching">
-    <label for="campaign-skills">Campaign skills</label>
-    <input
-        type="text"
-        id="campaign-skills"
-        placeholder="e.g. Video Editing, Animation, Scriptwriting"
-    >
-    <p>Match scores update based on the skills you enter.</p>
-</div>
-
-                </div>
-            </aside>
-
-            <section class="results">
-                <div class="results-heading">
-                    <div>
-                        <p class="eyebrow">YOUR CREATIVE NETWORK</p>
-                        <h2>Discover creators</h2>
-                    </div>
-                    <label class="sort-label" for="sort-filter">
-                        Sort by
-                        <select id="sort-filter">
-                            <option value="rating">Highest rated</option>
-                            <option value="budget-low">Lowest budget</option>
-                            <option value="budget-high">Highest budget</option>
-                        </select>
-                    </label>
-                </div>
-
-               
-
-                <p id="result-count" aria-live="polite"></p>
-                <div id="creator-grid" class="creator-grid"></div>
-
-                <div id="empty-state" class="empty-state" hidden>
-                    <h3>No creators found</h3>
-                    <p>Try changing your search or filters.</p>
-                </div>
-            </section>
-        </section>
-
-        <section id="shortlist" class="shortlist-section">
-            <h2>My shortlist <span id="shortlist-heading-count">(0)</span></h2>
-            <p>Creators you've saved for your campaign.</p>
-            <div id="shortlist-grid" class="creator-grid"></div>
-            
-
-
-        </section>
-    </main>
-
-    <footer>
-        <p>© 2026 Kosmic Creator Marketplace · Demo project</p>
-    </footer>
-
-    <script src="{{ url_for('static', filename='js/marketplace.js') }}" defer></script>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>CreatrAI - Creator Marketplace</title>
-
-    <link
-        rel="stylesheet"
-        href="{{ url_for('static', filename='css/marketplace.css') }}"
-    >
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/marketplace.css') }}">
 </head>
 
 <body>
 
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <h2>✦ Creatr<span>AI</span></h2>
+<header class="navbar">
+    <a class="brand" href="/">
+        <span class="brand-icon">✦</span>
+        <span>Kosmic<span class="purple">.</span></span>
+    </a>
 
-        <p class="side-label">WORKSPACE</p>
+    <nav>
+        <a class="active" href="/">Discover Creators</a>
+        <a href="/briefs-page">Campaign Briefs</a>
+        <a href="#shortlist">My Shortlist <span id="shortlist-count">0</span></a>
+    </nav>
+</header>
 
-        <a class="active" href="/marketplace">
-            ⌕ Discover Creators
-        </a>
+<main class="page">
 
-        <a href="#" onclick="alert('Coming soon!'); return false;">
-            ▤ My Briefs
-        </a>
+    <section class="hero">
+        <p class="eyebrow">THE CREATOR MARKETPLACE</p>
 
-        <a href="#" onclick="alert('Coming soon!'); return false;">
-            ♡ Saved Creators
-        </a>
+        <h1>Find your next<br>
+            <span>creative partner.</span>
+        </h1>
 
-        <div class="side-bottom">
-            Creative collaboration starts here ✨
+        <p class="hero-description">
+            Discover talented creators who can bring your brand's ideas to life.
+        </p>
+
+        <div class="search-box">
+            <span>⌕</span>
+
+            <input id="search-input"
+                   type="search"
+                   placeholder="Search creators or skills...">
+
+            <button id="clear-search" type="button">Clear</button>
         </div>
-    </aside>
+    </section>
 
-    <!-- Main Content -->
-    <main>
+    <section class="market-layout">
 
-        <header>
-            Workspace / <strong>Discover Creators</strong>
-        </header>
-
-        <!-- Hero Section -->
-        <section class="hero">
-
-            <p class="eyebrow">✦ THE CREATOR MARKETPLACE</p>
-
-            <h1>
-                Meet your next<br>
-                <span>creative partner.</span>
-            </h1>
-
-            <p>
-                Discover talented creators and find the perfect match
-                for your next project.
-            </p>
-
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="Search creators, skills or tools..."
-                aria-label="Search creators"
-            >
-
-            <button type="button" onclick="renderCreators()">
-                Search →
-            </button>
-
-        </section>
-
-        <!-- Marketplace Section -->
-        <section class="marketplace">
-
-            <div class="heading">
-                <h2>
-                    Explore Creators
-                    <span id="count">6</span>
-                </h2>
-
-                <button
-                    type="button"
-                    class="clear"
-                    onclick="clearFilters()"
-                >
-                    Clear filters
+        <aside class="filters">
+            <div class="filter-heading">
+                <h2>Filters</h2>
+                <button id="reset-filters" class="text-button" type="button">
+                    Reset
                 </button>
             </div>
 
-            <!-- Category Buttons -->
-            <div class="chips">
+            <label for="category-filter">Category</label>
 
-                <button type="button" onclick="setCategory('All')">
-                    All creators
-                </button>
+            <select id="category-filter">
+                <option value="all">All categories</option>
+                <option value="Video Editing">Video Editing</option>
+                <option value="Scriptwriting">Scriptwriting</option>
+                <option value="Animation">Animation</option>
+                <option value="Videography">Videography</option>
+            </select>
 
-                <button type="button" onclick="setCategory('Video')">
-                    Video
-                </button>
+            <label for="rating-filter">Minimum rating</label>
 
-                <button type="button" onclick="setCategory('Design')">
-                    Design
-                </button>
+            <select id="rating-filter">
+                <option value="0">Any rating</option>
+                <option value="4">4.0 and above</option>
+                <option value="4.5">4.5 and above</option>
+                <option value="4.8">4.8 and above</option>
+            </select>
 
-                <button type="button" onclick="setCategory('AI')">
-                    AI creation
-                </button>
+            <label for="budget-filter">Maximum budget</label>
 
-                <button type="button" onclick="setCategory('Social')">
-                    Social media
-                </button>
+            <select id="budget-filter">
+                <option value="10000">Any budget</option>
+                <option value="2000">₹2,000</option>
+                <option value="3500">₹3,500</option>
+                <option value="5000">₹5,000</option>
+            </select>
 
-                <button type="button" onclick="setCategory('Writing')">
-                    Writing
-                </button>
+            <label class="availability-option">
+                <input type="checkbox" id="available-filter">
+                Available for projects
+            </label>
 
+            <div class="smart-note">
+                <strong>✦ Smart matching</strong>
+                <p>Search by skills to find creators suitable for your campaign.</p>
+            </div>
+        </aside>
+
+        <section class="results">
+
+            <div class="results-heading">
+                <div>
+                    <p class="eyebrow">YOUR CREATIVE NETWORK</p>
+                    <h2>Discover creators</h2>
+                </div>
+
+                <label class="sort-label" for="sort-filter">
+                    Sort by
+                    <select id="sort-filter">
+                        <option value="rating">Highest rated</option>
+                        <option value="budget-low">Lowest budget</option>
+                        <option value="budget-high">Highest budget</option>
+                    </select>
+                </label>
             </div>
 
-            <!-- Filters and Creator Cards -->
-            <div class="layout">
+            <p id="result-count" aria-live="polite"></p>
 
-                <!-- Filters -->
-                <aside class="filters">
+            <div id="creator-grid" class="creator-grid"></div>
 
-                    <h3>Filters</h3>
-
-                    <label for="skillFilter">Skills</label>
-
-                    <select
-                        id="skillFilter"
-                        onchange="renderCreators()"
-                    >
-                        <option value="">All skills</option>
-                        <option value="Video Editing">Video Editing</option>
-                        <option value="Graphic Design">Graphic Design</option>
-                        <option value="UI/UX Design">UI/UX Design</option>
-                        <option value="AI Art">AI Art</option>
-                        <option value="Social Media">Social Media</option>
-                        <option value="Copywriting">Copywriting</option>
-                        <option value="Motion Graphics">Motion Graphics</option>
-                        <option value="Prompt Engineering">Prompt Engineering</option>
-                    </select>
-
-                    <label for="availabilityFilter">
-                        Availability
-                    </label>
-
-                    <select
-                        id="availabilityFilter"
-                        onchange="renderCreators()"
-                    >
-                        <option value="">Any availability</option>
-                        <option value="Available">Available</option>
-                        <option value="Busy">Busy</option>
-                    </select>
-
-                    <label for="budgetFilter">
-                        Maximum budget: ₹<span id="budgetValue">10000</span>
-                    </label>
-
-                    <input
-                        type="range"
-                        id="budgetFilter"
-                        min="500"
-                        max="10000"
-                        step="500"
-                        value="10000"
-                        oninput="
-                            document.getElementById('budgetValue').textContent = this.value;
-                            renderCreators();
-                        "
-                    >
-
-                    <label class="check" for="commercialFilter">
-                        <input
-                            type="checkbox"
-                            id="commercialFilter"
-                            onchange="renderCreators()"
-                        >
-                        Commercial use included
-                    </label>
-
-                </aside>
-
-                <!-- JavaScript inserts creator cards here -->
-                <div
-                    id="creatorGrid"
-                    class="creator-grid"
-                    aria-live="polite"
-                ></div>
-
+            <div id="empty-state" class="empty-state" hidden>
+                <h3>No creators found</h3>
+                <p>Try changing your search or filters.</p>
             </div>
 
         </section>
+    </section>
 
-        <footer>
-            CreatrAI Marketplace · Demo version
-        </footer>
+    <section id="shortlist" class="shortlist-section">
+        <p class="eyebrow">YOUR SAVED CREATORS</p>
+        <h2>My Shortlist <span id="shortlist-heading-count">(0)</span></h2>
+        <p class="section-description">Creators saved for your next campaign.</p>
 
-    </main>
+        <div id="shortlist-grid" class="creator-grid"></div>
+    </section>
 
-    <!-- JavaScript File -->
-    <script src="{{ url_for('static', filename='js/marketplace.js') }}"></script>
+</main>
+
+<footer>
+    <p>© 2026 Kosmic · AI-Powered Creator Marketplace</p>
+</footer>
+
+<script src="{{ url_for('static', filename='js/marketplace.js') }}" defer></script>
 
 </body>
 </html>

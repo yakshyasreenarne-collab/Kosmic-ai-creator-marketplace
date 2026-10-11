@@ -595,3 +595,59 @@ button:hover {
         grid-template-columns: 1fr;
     }
 }
+.ai-idea-section {
+    background: #121218;
+    color: #fff;
+    border: 1px solid #30303d;
+    border-radius: 12px;
+    padding: 24px;
+    margin: 30px 0;
+}
+
+.ai-idea-section h2 {
+    color: #c084fc;
+    margin-bottom: 8px;
+}
+
+.ai-idea-section p {
+    color: #aaa;
+    margin-bottom: 18px;
+}
+
+.ai-idea-section label {
+    display: block;
+    margin: 12px 0 6px;
+}
+
+.ai-idea-section input,
+.ai-idea-section select {
+    display: block;
+    width: 100%;
+    padding: 11px;
+    background: #20202a;
+    color: white;
+    border: 1px solid #393947;
+    border-radius: 7px;
+}
+
+.ai-idea-section button {
+    margin-top: 18px;
+    padding: 12px 18px;
+    background: #9333ea;
+    color: white;
+    border: 0;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+#aiIdeas {
+    margin-top: 20px;
+}
+
+#aiIdeas article {
+    background: #1d1b27;
+    padding: 15px;
+    margin-top: 12px;
+    border-radius: 8px;
+    border-left: 3px solid #a855f7;
+}
